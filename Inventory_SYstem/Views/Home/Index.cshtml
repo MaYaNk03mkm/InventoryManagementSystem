@@ -1,0 +1,95 @@
+﻿@model Inventory_SYstem.Models.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<h1 class="mb-4">Dashboard</h1>
+
+<div class="row">
+
+    <div class="col-md-3">
+        <div class="card text-center">
+            <div class="card-body">
+                <h5>📦 Total Products</h5>
+                <h2>@Model.TotalProducts</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <a asp-controller="Product"
+           asp-action="Category"
+           asp-route-category="Electronics"
+           style="text-decoration:none;">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5>💻 Electronics</h5>
+                    <h2>@Model.ElectronicsCount</h2>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-3">
+        <a asp-controller="Product"
+           asp-action="Category"
+           asp-route-category="Furniture"
+           style="text-decoration:none;">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5>🪑 Furniture</h5>
+                    <h2>@Model.FurnitureCount</h2>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-3">
+        <a asp-controller="Product"
+           asp-action="Category"
+           asp-route-category="Grocery"
+           style="text-decoration:none;">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5>🥫 Grocery</h5>
+                    <h2>@Model.GroceryCount</h2>
+                </div>
+            </div>
+        </a>
+    </div>
+
+</div>
+
+<br />
+
+<div class="row">
+
+    <div class="col-md-3">
+        <a asp-controller="Product"
+           asp-action="Category"
+           asp-route-category="Sports"
+           style="text-decoration:none;">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5>⚽ Sports</h5>
+                    <h2>@Model.SportsCount</h2>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-3">
+        <a asp-controller="Product"
+           asp-action="LowStock"
+           style="text-decoration:none;">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5>⚠️ Low Stock</h5>
+                    <h2>@Model.LowStockCount</h2>
+                </div>
+            </div>
+        </a>
+    </div>
+
+</div>

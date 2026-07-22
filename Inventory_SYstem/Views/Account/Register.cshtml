@@ -1,0 +1,51 @@
+﻿@model Inventory_SYstem.Models.User
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+
+        <div class="col-md-6">
+
+            <div class="card p-4">
+
+                <h2 class="text-center mb-4">
+                    Create Account
+                </h2>
+
+                <form method="post">
+
+                    <div class="mb-3">
+                        <label class="form-label">Username</label>
+                        <input asp-for="Username"
+                               class="form-control" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input asp-for="Email"
+                               class="form-control" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <input asp-for="Password"
+                               type="password"
+                               class="form-control" />
+                    </div>
+
+                    <button type="submit"
+                            class="btn btn-success w-100">
+                        Register
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

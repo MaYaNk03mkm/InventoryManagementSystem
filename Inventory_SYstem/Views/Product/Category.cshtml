@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Inventory_SYstem.Models.Product>
+
+@{
+    ViewData["Title"] = "Category Products";
+}
+
+<h2>Category Products</h2>
+
+<table class="table table-bordered mt-3">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Product Name</th>
+            <th>Category</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ProductId</td>
+                <td>@item.ProductName</td>
+                <td>@item.Category</td>
+                <td>@item.Quantity</td>
+                <td>@item.Price</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-controller="Home"
+   asp-action="Index"
+   class="btn btn-secondary">
+    Back To Dashboard
+</a>
