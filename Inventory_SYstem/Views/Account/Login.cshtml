@@ -3,53 +3,49 @@
     Layout = "_AuthLayout";
 }
 
-<div class="container mt-5">
-    <div class="row justify-content-center">
+<div class="container d-flex justify-content-center align-items-center vh-100">
 
-        <div class="col-md-6">
+    <div class="card shadow-lg border-0 rounded-4 p-5" style="width:430px;">
 
-            <div class="card p-4">
+        <h2 class="text-center text-primary fw-bold mb-2">
+            Inventory Management
+        </h2>
 
-                <<h2 class="text-center text-primary fw-bold">
-                    Inventory Management
-                </h2>
+        <p class="text-center text-muted mb-4">
+            Sign in to continue
+        </p>
 
-                <p class="text-center text-muted mb-4">
-                    Sign in to continue
-                </p>
+        @if (ViewBag.Error != null)
+        {
+            <div class="alert alert-danger">
+                @ViewBag.Error
+            </div>
+        }
 
-                @if (ViewBag.Error != null)
-                {
-                    <div class="alert alert-danger">
-                        @ViewBag.Error
-                    </div>
-                }
+        <form method="post">
 
-                <form method="post">
-
-                    <div class="mb-3">
-                        <label class="form-label">Username</label>
-                        <input name="username"
-                               class="form-control" />
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Password</label>
-                        <input name="password"
-                               type="password"
-                               class="form-control" />
-                    </div>
-
-                    <button type="submit"
-                            class="btn btn-primary w-100">
-                        Login
-                    </button>
-
-                </form>
-
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Username</label>
+                <input type="text"
+                       name="username"
+                       class="form-control form-control-lg"
+                       placeholder="Enter Username" />
             </div>
 
-        </div>
+            <div class="mb-4">
+                <label class="form-label fw-semibold">Password</label>
+                <input type="password"
+                       name="password"
+                       class="form-control form-control-lg"
+                       placeholder="Enter Password" />
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg w-100">
+                Login
+            </button>
+
+        </form>
 
     </div>
-</div>
+
+</div>  
