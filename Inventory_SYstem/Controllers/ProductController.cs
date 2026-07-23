@@ -19,13 +19,23 @@ namespace Inventory_SYstem.Controllers
             return HttpContext.Session.GetString("Username") != null;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string searchString)
         {
             if (!IsLoggedIn())
                 return RedirectToAction("Login", "Account");
 
-            var products = _context.Products.ToList();
-            return View(products);
+            var products = _context.Products.AsQueryable();
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                products = products.Where(p =>
+                    p.ProductName.Contains(searchString) ||
+                    p.Category.Contains(searchString));
+            }
+
+            ViewData["CurrentFilter"] = searchString;
+
+            return View(products.ToList());
         }
 
         public IActionResult Create()

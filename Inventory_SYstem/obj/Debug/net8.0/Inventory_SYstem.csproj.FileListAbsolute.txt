@@ -144,3 +144,4 @@ C:\Users\mayan\source\repos\Inventory_SYstem\Inventory_SYstem\bin\Debug\net8.0\r
 C:\Users\mayan\source\repos\Inventory_SYstem\Inventory_SYstem\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\Users\mayan\source\repos\Inventory_SYstem\Inventory_SYstem\obj\Debug\net8.0\Inventory_SYstem.csproj.AssemblyReference.cache
 C:\Users\mayan\source\repos\Inventory_SYstem\Inventory_SYstem\obj\Debug\net8.0\Inventor.5243717F.Up2Date
+C:\Users\mayan\source\repos\Inventory_SYstem\Inventory_SYstem\obj\Debug\net8.0\Inventory_SYstem.sourcelink.json

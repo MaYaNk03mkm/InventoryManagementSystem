@@ -7,6 +7,29 @@
 <h1>Product Management</h1>
 
 <hr />
+<form asp-action="Index" method="get" class="row g-2 mb-3">
+
+    <div class="col-md-6">
+        <input type="text"
+               name="searchString"
+               value="@ViewData["CurrentFilter"]"
+               class="form-control"
+               placeholder="Search by Product Name or Category..." />
+    </div>
+
+    <div class="col-auto">
+        <button type="submit" class="btn btn-success">
+            Search
+        </button>
+    </div>
+
+    <div class="col-auto">
+        <a asp-action="Index" class="btn btn-secondary">
+            Reset
+        </a>
+    </div>
+
+</form>
 
 <a asp-action="Create" class="btn btn-primary">
     Add Product
