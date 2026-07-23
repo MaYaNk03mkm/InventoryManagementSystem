@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Login";
+    Layout = "_AuthLayout";
 }
 
 <div class="container mt-5">
@@ -9,9 +10,13 @@
 
             <div class="card p-4">
 
-                <h2 class="text-center mb-4">
-                    Login
+                <<h2 class="text-center text-primary fw-bold">
+                    Inventory Management
                 </h2>
+
+                <p class="text-center text-muted mb-4">
+                    Sign in to continue
+                </p>
 
                 @if (ViewBag.Error != null)
                 {
