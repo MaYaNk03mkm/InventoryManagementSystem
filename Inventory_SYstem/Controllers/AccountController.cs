@@ -23,10 +23,24 @@ namespace Inventory_SYstem.Controllers
         [HttpPost]
         public IActionResult Register(User user)
         {
-            _context.Users.Add(user);
-            _context.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                bool userExists = _context.Users.Any(x =>
+                    x.Username == user.Username || x.Email == user.Email);
 
-            return RedirectToAction("Login");
+                if (userExists)
+                {
+                    ViewBag.Error = "Username or Email already exists.";
+                    return View(user);
+                }
+
+                _context.Users.Add(user);
+                _context.SaveChanges();
+
+                return RedirectToAction("Login");
+            }
+
+            return View(user);
         }
 
         public IActionResult Login()
