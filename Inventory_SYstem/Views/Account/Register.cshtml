@@ -45,6 +45,18 @@
                                class="form-control" />
                         <span asp-validation-for="Password" class="text-danger"></span>
                     </div>
+                    <div class="mb-3">
+                        <label class="form-label">Role</label>
+
+                        <select asp-for="Role" class="form-select">
+                            <option value="">-- Select Role --</option>
+                            <option value="Admin">Admin</option>
+                            <option value="Supplier">Supplier</option>
+                            <option value="Buyer">Buyer</option>
+                        </select>
+
+                        <span asp-validation-for="Role" class="text-danger"></span>
+                    </div>
 
                     <button type="submit"
                             class="btn btn-success w-100">
