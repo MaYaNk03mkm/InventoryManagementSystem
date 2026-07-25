@@ -60,6 +60,20 @@ namespace Inventory_SYstem.Controllers
             {
                 HttpContext.Session.SetString("Username", user.Username);
 
+                if (user.Role == "Admin")
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                else if (user.Role == "Supplier")
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                else if (user.Role == "Buyer")
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+
+                // Default redirect for any other role
                 return RedirectToAction("Index", "Home");
             }
 
@@ -70,7 +84,6 @@ namespace Inventory_SYstem.Controllers
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();
-
             return RedirectToAction("Login");
         }
     }
