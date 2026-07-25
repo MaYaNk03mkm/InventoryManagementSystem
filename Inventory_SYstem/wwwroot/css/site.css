@@ -193,3 +193,53 @@ h1, h2 {
     background: #2563eb;
     border-radius: 10px;
 }
+/* ==========================
+   Inventory Login Box
+========================== */
+
+.inventory-box {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 42px;
+    background: #2563eb;
+    color: white;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(37,99,235,.25);
+    transition: .3s ease;
+}
+
+    .inventory-box:hover {
+        transform: scale(1.08) rotate(-5deg);
+    }
+/* Particle */
+
+.particle {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background: #2563eb;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #2563eb;
+    pointer-events: none;
+    z-index: 9999;
+    transition: all .8s linear;
+}
+.inventory-box.active {
+    transform: scale(1.15);
+    box-shadow: 0 0 20px #2563eb, 
+                0 0 40px #2563eb, 
+                0 0 70px #2563eb;
+}
+.energy - beam {
+    width: 4px;
+    height: 0;
+    background: #3b82f6;
+    margin: 0 auto;
+    border - radius: 10px;
+    box - shadow: 0 0 10px #3b82f6, 0 0 20px #3b82f6;
+    transition: height .5s ease;
+}
