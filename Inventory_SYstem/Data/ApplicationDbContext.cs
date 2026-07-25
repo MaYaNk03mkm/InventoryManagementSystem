@@ -16,5 +16,6 @@ namespace Inventory_SYstem.Data
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<StockIn> StockIns { get; set; }
+        public DbSet<StockOut> StockOuts { get; set; }
     }
 }
