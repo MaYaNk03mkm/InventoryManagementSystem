@@ -1,9 +1,45 @@
-﻿@{
+﻿@model Inventory_SYstem.Models.StockIn
+@using Inventory_SYstem.Models
+
+@{
     ViewData["Title"] = "Stock In";
 }
 
 <h2 class="mb-4">📦 Stock In</h2>
 
-<div class="alert alert-success">
-    Stock In Module is Ready!
-</div>
+<form method="post">
+
+    <div class="card p-4">
+
+        <div class="mb-3">
+            <label class="form-label">Select Product</label>
+
+            <select asp-for="ProductId" class="form-select">
+                <option value="">-- Select Product --</option>
+
+                @foreach (var product in (List<Product>)ViewBag.Products)
+                {
+                    <option value="@product.ProductId">
+                        @product.ProductName
+                    </option>
+                }
+            </select>
+
+            <span asp-validation-for="ProductId" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Quantity</label>
+
+            <input asp-for="Quantity" class="form-control" />
+
+            <span asp-validation-for="Quantity" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-success">
+            Stock In
+        </button>
+
+    </div>
+
+</form>
