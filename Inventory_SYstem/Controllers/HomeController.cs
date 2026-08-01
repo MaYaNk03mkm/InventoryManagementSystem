@@ -42,7 +42,14 @@ namespace Inventory_SYstem.Controllers
                     .Count(p => p.Category == "Sports"),
 
                 LowStockCount = _context.Products
-                    .Count(p => p.Quantity < 5)
+                    .Count(p => p.Quantity < 5),
+                TotalStockQuantity = _context.Products.Sum(p => p.Quantity),
+
+                TotalStockIn = _context.StockIns.Sum(s => s.Quantity),
+
+                TotalStockOut = _context.StockOuts.Sum(s => s.Quantity),
+
+                InventoryValue = _context.Products.Sum(p => p.Price * p.Quantity)
             };
 
             return View(model);

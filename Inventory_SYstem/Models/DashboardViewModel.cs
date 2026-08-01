@@ -13,5 +13,13 @@
         public int SportsCount { get; set; }
 
         public int LowStockCount { get; set; }
+
+        public int TotalStockQuantity { get; set; }
+
+        public int TotalStockIn { get; set; }
+
+        public int TotalStockOut { get; set; }
+
+        public decimal InventoryValue { get; set; }
     }
 }
