@@ -21,7 +21,7 @@
         <div class="card text-center shadow">
             <div class="card-body">
                 <h5>💰 Inventory Value</h5>
-                <h2>₹ @Model.InventoryValue</h2>
+                <h2>₹ @Model.InventoryValue.ToString("N0")</h2>
             </div>
         </div>
     </div>
@@ -139,3 +139,189 @@
     </div>
 
 </div>
+
+<hr class="my-5" />
+
+<div class="row">
+
+    <div class="col-lg-6 mb-4">
+
+        <div class="card shadow">
+
+            <div class="card-header bg-primary text-white">
+
+                <h5 class="mb-0">
+                    📊 Products by Category
+                </h5>
+
+            </div>
+
+            <div class="card-body">
+
+                <canvas id="categoryChart" height="200"></canvas>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-6 mb-4">
+
+        <div class="card shadow">
+
+            <div class="card-header bg-success text-white">
+
+                <h5 class="mb-0">
+                    📈 Stock In vs Stock Out
+                </h5>
+
+            </div>
+
+            <div class="card-body">
+
+                <canvas id="stockChart" height="120"></canvas>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+@section Scripts {
+
+    <script>
+
+        const categoryCtx = document.getElementById('categoryChart');
+
+        new Chart(categoryCtx, {
+
+            type: 'pie',
+
+            data: {
+
+                labels: ['Electronics', 'Furniture', 'Grocery', 'Sports'],
+
+                datasets: [{
+
+                    label: 'Products',
+
+                    data: [
+
+                        @Model.ElectronicsCount,
+
+                        @Model.FurnitureCount,
+
+                        @Model.GroceryCount,
+
+                        @Model.SportsCount
+
+                    ],
+
+                    backgroundColor: [
+
+                        '#0d6efd',
+
+                        '#198754',
+
+                        '#ffc107',
+
+                        '#dc3545'
+
+                    ],
+
+                    borderWidth: 2
+
+                }]
+
+            },
+
+            options: {
+
+                responsive: true,
+                maintainAspectRatio: false,
+
+                plugins: {
+
+                    legend: {
+
+                        position: 'bottom'
+
+                    }
+
+                }
+
+            }
+
+        });
+
+
+
+        const stockCtx = document.getElementById('stockChart');
+
+        new Chart(stockCtx, {
+
+            type: 'bar',
+
+            data: {
+
+                labels: ['Stock In', 'Stock Out'],
+
+                datasets: [{
+
+                    label: 'Quantity',
+
+                    data: [
+
+                        @Model.TotalStockIn,
+
+                        @Model.TotalStockOut
+
+                    ],
+
+                    backgroundColor: [
+
+                        '#198754',
+
+                        '#dc3545'
+
+                    ],
+
+                    borderRadius: 10
+
+                }]
+
+            },
+
+            options: {
+
+                responsive: true,
+
+                scales: {
+
+                    y: {
+
+                        beginAtZero: true
+
+                    }
+
+                },
+
+                plugins: {
+
+                    legend: {
+
+                        display: false
+
+                    }
+
+                }
+
+            }
+
+        });
+
+    </script>
+
+}
