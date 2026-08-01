@@ -7,6 +7,7 @@
 <h1>Product Management</h1>
 
 <hr />
+
 <form asp-action="Index" method="get" class="row g-2 mb-3">
 
     <div class="col-md-6">
@@ -31,18 +32,20 @@
 
 </form>
 
-<a asp-action="Create" class="btn btn-primary">
+<a asp-action="Create" class="btn btn-primary mb-3">
     Add Product
 </a>
 
-<table class="table table-bordered mt-3">
-    <thead>
+<table class="table table-bordered table-hover">
+
+    <thead class="table-dark">
         <tr>
             <th>ID</th>
             <th>Product Name</th>
             <th>Category</th>
             <th>Quantity</th>
             <th>Price</th>
+            <th>Status</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -52,13 +55,36 @@
         @foreach (var item in Model)
         {
             <tr>
+
                 <td>@item.ProductId</td>
+
                 <td>@item.ProductName</td>
+
                 <td>@item.Category</td>
+
                 <td>@item.Quantity</td>
-                <td>@item.Price</td>
+
+                <td>₹ @item.Price</td>
 
                 <td>
+
+                    @if (item.Quantity <= 10)
+                    {
+                        <span class="badge bg-danger">
+                            🔴 Low Stock
+                        </span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-success">
+                            🟢 In Stock
+                        </span>
+                    }
+
+                </td>
+
+                <td>
+
                     <a asp-action="Edit"
                        asp-route-id="@item.ProductId"
                        class="btn btn-warning btn-sm">
@@ -70,9 +96,12 @@
                        class="btn btn-danger btn-sm">
                         Delete
                     </a>
+
                 </td>
+
             </tr>
         }
 
     </tbody>
+
 </table>

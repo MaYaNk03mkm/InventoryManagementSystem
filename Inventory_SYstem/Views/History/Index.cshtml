@@ -1,0 +1,144 @@
+﻿@model List<Inventory_SYstem.Models.TransactionHistoryViewModel>
+
+@{
+    ViewData["Title"] = "Transaction History";
+    int sr = 1;
+}
+
+<div class="container mt-4">
+
+    <h2 class="mb-4">📜 Transaction History</h2>
+
+    <form method="get" class="row mb-4">
+
+        <div class="col-md-4">
+            <input type="text"
+                   name="searchString"
+                   value="@ViewBag.SearchString"
+                   class="form-control"
+                   placeholder="Search Product..." />
+        </div>
+
+        <div class="col-md-3">
+            <select name="transactionType" class="form-select">
+
+                <option value="All">All Transactions</option>
+
+                @if (ViewBag.TransactionType == "Stock In")
+                {
+                    <option value="Stock In" selected>Stock In</option>
+                }
+                else
+                {
+                    <option value="Stock In">Stock In</option>
+                }
+
+                @if (ViewBag.TransactionType == "Stock Out")
+                {
+                    <option value="Stock Out" selected>Stock Out</option>
+                }
+                else
+                {
+                    <option value="Stock Out">Stock Out</option>
+                }
+
+            </select>
+        </div>
+
+        <div class="col-md-3">
+            <button type="submit" class="btn btn-primary">
+                Search
+            </button>
+
+            <a asp-action="Index" class="btn btn-secondary">
+                Reset
+            </a>
+        </div>
+
+    </form>
+
+    <table class="table table-bordered table-hover align-middle">
+
+        <thead class="table-dark">
+
+            <tr>
+
+                <th>S.No</th>
+                <th>Product</th>
+                <th>Transaction</th>
+                <th>Quantity</th>
+                <th>Date</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            @if (Model.Any())
+            {
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td>@sr</td>
+
+                        <td>@item.ProductName</td>
+
+                        <td>
+
+                            @if (item.TransactionType == "Stock In")
+                            {
+                                <span class="badge bg-success">
+                                    Stock In
+                                </span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">
+                                    Stock Out
+                                </span>
+                            }
+
+                        </td>
+
+                        <td>
+
+                            @if (item.TransactionType == "Stock In")
+                            {
+                                <span class="text-success fw-bold">
+                                    +@item.Quantity
+                                </span>
+                            }
+                            else
+                            {
+                                <span class="text-danger fw-bold">
+                                    -@item.Quantity
+                                </span>
+                            }
+
+                        </td>
+
+                        <td>@item.Date.ToString("dd-MM-yyyy hh:mm tt")</td>
+
+                    </tr>
+
+                    sr++;
+                }
+            }
+            else
+            {
+                <tr>
+
+                    <td colspan="5" class="text-center text-danger fw-bold">
+                        No Record Found
+                    </td>
+
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+
+</div>
