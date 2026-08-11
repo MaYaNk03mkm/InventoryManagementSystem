@@ -1,4 +1,6 @@
-﻿@{
+﻿@model List<Inventory_SYstem.Models.Category>
+
+@{
     ViewData["Title"] = "Categories";
 }
 
@@ -6,23 +8,37 @@
 
 <hr />
 
-<button class="btn btn-success">Add Category</button>
+<a asp-action="Create" class="btn btn-success">Add Category</a>
 
 <table class="table table-bordered mt-3">
     <thead>
         <tr>
             <th>ID</th>
             <th>Category Name</th>
+            <th>Actions</th>
         </tr>
     </thead>
+
     <tbody>
-        <tr>
-            <td>1</td>
-            <td>Electronics</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Furniture</td>
-        </tr>
+        @foreach (var category in Model)
+        {
+            <tr>
+                <td>@category.CategoryId</td>
+                <td>@category.CategoryName</td>
+                <td>
+                    <a asp-action="Edit"
+                       asp-route-id="@category.CategoryId"
+                       class="btn btn-primary btn-sm">
+                        Edit
+                    </a>
+
+                    <a asp-action="Delete"
+                       asp-route-id="@category.CategoryId"
+                       class="btn btn-danger btn-sm">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
