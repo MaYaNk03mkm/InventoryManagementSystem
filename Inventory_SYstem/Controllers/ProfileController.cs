@@ -32,30 +32,43 @@ namespace Inventory_SYstem.Controllers
 
             return View(user);
         }
+
         public IActionResult ChangePassword()
         {
             var username = HttpContext.Session.GetString("Username");
 
             if (username == null)
+            {
                 return RedirectToAction("Login", "Account");
+            }
 
             return View();
         }
 
         [HttpPost]
-        public IActionResult ChangePassword(string currentPassword, string newPassword, string confirmPassword)
+        public IActionResult ChangePassword(
+            string currentPassword,
+            string newPassword,
+            string confirmPassword)
         {
             var username = HttpContext.Session.GetString("Username");
 
-            if (username == null)
+            if (string.IsNullOrEmpty(username))
+            {
                 return RedirectToAction("Login", "Account");
+            }
 
-            var user = _context.Users.FirstOrDefault(u => u.Username == username);
+            var user = _context.Users
+                .FirstOrDefault(u =>
+                    u.Username.Trim().ToLower() ==
+                    username.Trim().ToLower());
 
             if (user == null)
+            {
                 return RedirectToAction("Login", "Account");
+            }
 
-            if (user.Password != currentPassword)
+            if (currentPassword.Trim() != user.Password.Trim())
             {
                 ViewBag.Error = "Current password is incorrect.";
                 return View();
